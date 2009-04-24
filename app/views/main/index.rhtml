@@ -1,0 +1,62 @@
+<% if flash[:notice] %>
+    <div style="color:#FF0000"><%= flash[:notice] %></div>
+<% end %>
+
+<h1>Welcome to JTV Explorer!</h1>
+<p>Please let us know if you find this sample app useful!</p>
+
+<h2>List of API Calls</h2>
+<h3>User</h3>
+<ul>
+    <li><%= link_to "/user/show", "/user/show" %></li>
+    <li><%= link_to "/user/update", "/user/update" %></li>
+    <li><%= link_to "/user/friends", "/user/friends" %></li>
+    <li><%= link_to "/user/favorites", "/user/favorites" %></li>
+    <li><%= link_to "/user/events", "/user/events" %></li>    
+</ul>
+
+<h3>Channel</h3>
+<ul>
+    <li><%= link_to "/channel/show", "/channel/show" %></li>
+    <li><%= link_to "/channel/update", "/channel/update" %></li>
+    <li><%= link_to "/channel/fans", "/channel/fans" %></li>
+    <li><%= link_to "/channel/clips", "/channel/clips" %></li>
+    <li><%= link_to "/channel/archives", "/channel/archives" %></li>
+    <li><%= link_to "/channel/embed", "/channel/embed" %></li>    
+</ul>
+
+<h3>Clip</h3>
+<ul>
+    <li><%= link_to "/clip/show", "/clip/show" %></li>
+    <li><%= link_to "/clip/update", "/clip/update" %></li>
+    <li><%= link_to "/clip/create", "/clip/create" %></li>
+    <li><%= link_to "/clip/destroy", "/clip/destroy" %></li>
+    <li><%= link_to "/clip/embed", "/clip/embed" %></li>    
+</ul>
+
+<h3>Event</h3>
+<ul>
+    <li><%= link_to "/event/show", "/event/show" %></li>
+    <li><%= link_to "/event/update", "/event/update" %></li>
+    <li><%= link_to "/event/create", "/event/create" %></li>
+    <li><%= link_to "/event/destroy", "/event/destroy" %></li>
+</ul>
+
+<h3>Friend</h3>
+<ul>
+    <li><%= link_to "/friend/create", "/friend/show" %></li>
+    <li><%= link_to "/friend/destroy", "/friend/destroy" %></li>
+
+</ul>
+
+<h3>Fan</h3>
+<ul>
+    <li><%= link_to "/fan/create", "/fan/show" %></li>
+    <li><%= link_to "/fan/destroy", "/fan/destroy" %></li>
+
+</ul>
+
+<h3>Account</h3>
+<ul>
+    <li><%= link_to "/account/fme_config", "/account/fme_config" %></li>
+</ul>

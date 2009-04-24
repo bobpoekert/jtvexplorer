@@ -1,0 +1,11 @@
+<h2>event/show</h2>
+
+<% form_tag do %>
+    login: <%= text_field_tag 'id', params[:id] %> <br>
+    serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <%= submit_tag 'Show Event' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

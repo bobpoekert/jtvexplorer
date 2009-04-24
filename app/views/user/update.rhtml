@@ -1,0 +1,18 @@
+<h2>user/update</h2>
+
+<% if @oauth %>
+    <% form_tag '', :multipart => true do %>
+        <% [:name, :profile_about, :favorite_quotes, :location, :profile_background_color, :profile_link_color, :profile_header_text_color, :profile_header_bg_color, :profile_header_border_color].each do |x| %>
+            <%= x %>: <%= text_field_tag "user[#{x}]", (params[:user] ? params[:user][x] : nil) %> <br>
+        <% end %>
+        picture: <%= file_field_tag "picture" %><br>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <%= submit_tag 'Update User' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your user", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>

@@ -1,0 +1,15 @@
+<h2>channel/archives</h2>
+
+<% form_tag do %>
+    login: <%= text_field_tag 'login', params[:login] %> <br>
+    
+    offset: <%= text_field_tag 'offset', params[:offset] || 0 %> <br>
+    limit: <%= text_field_tag 'limit', params[:limit] || 20 %> <br>
+    
+    serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <%= submit_tag 'Show Archives' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

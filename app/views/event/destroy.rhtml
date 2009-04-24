@@ -1,0 +1,15 @@
+<h2>event/destroy</h2>
+
+<% if @oauth %>
+    <% form_tag do %>
+        id: <%= text_field_tag "id", params[:id] %><br>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <%= submit_tag 'Destroy Event' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your user", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>

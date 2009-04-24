@@ -1,0 +1,17 @@
+<h2>clip/create</h2>
+
+<% if @oauth %>
+    <% form_tag '', :multipart => true do %>
+        <% [:start_time, :end_time, :title, :description, :tags, :category, :subcategory].each do |x| %>
+            <%= x %>: <%= text_field_tag "clip[#{x}]", (params[:clip] ? params[:clip][x] : nil) %> <br>
+        <% end %>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <%= submit_tag 'Create Clip' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your channel", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>

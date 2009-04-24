@@ -1,0 +1,18 @@
+<h2>channel/update</h2>
+
+<% if @oauth %>
+    <% form_tag '', :multipart => true do %>
+        <% [:title, :tags, :category, :subcategory, :language, :timezone, :about, :description, :blog, :facebook, :myspace, :first_color, :second_color, :text_color, :link_color, :background_color, :header_background_color, :wrapper_background_color, :alt_text, :box_background, :box_border, :chat_border, :h1_color, :h2_color].each do |x| %>
+            <%= x %>: <%= text_field_tag "channel[#{x}]", (params[:channel] ? params[:channel][x] : nil) %> <br>
+        <% end %>
+        picture: <%= file_field_tag "picture" %><br>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <%= submit_tag 'Update Channel' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your channel", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>

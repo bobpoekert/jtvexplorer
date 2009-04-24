@@ -1,0 +1,18 @@
+<h2>event/update</h2>
+
+<% if @oauth %>
+    <% form_tag '', :multipart => true do %>
+        id: <%= text_field_tag "id", params[:id] %><br>
+        <% [:start_time, :length, :title, :description, :tags].each do |x| %>
+            <%= x %>: <%= text_field_tag "event[#{x}]", (params[:event] ? params[:event][x] : nil) %> <br>
+        <% end %>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <%= submit_tag 'Update Event' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your channel", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>

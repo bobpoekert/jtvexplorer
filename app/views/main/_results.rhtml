@@ -1,0 +1,6 @@
+<% if @result %>
+    <h3>Result for <%= @req_method.blank? ? "" : @req_method + " " %>'<%= @query %>'</h3>
+    <pre>
+        <%= h @result.body %>
+    </pre>
+<% end %>

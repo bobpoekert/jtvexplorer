@@ -1,0 +1,15 @@
+<h2>friend/create</h2>
+
+<% if @oauth %>
+    <% form_tag do %>
+        login (of user to friend): <%= text_field_tag "login" %><br>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <%= submit_tag 'Friend User' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your user", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>

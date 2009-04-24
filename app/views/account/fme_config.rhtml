@@ -1,0 +1,11 @@
+<h2>account/fme_config</h2>
+
+<% if @oauth %>
+    <% form_tag '', :multipart => true do %>
+        <%= submit_tag 'Get my FME config' %>
+    <% end %>
+<% else %>
+    <%= link_to "Log in to enable this call for your channel", @request_token.authorize_url %>
+<% end %>
+
+<%= render :partial => "main/results" %>
