@@ -1,3 +1,9 @@
 JTV Explorer is a sample app for the Justin.tv REST API written in Ruby on Rails.
 
 Run the jtvexplorer rails app and go to http://localhost:3000/ to see the complete list of actions supported by jtvexplorer.
+
+In order to run this you will have to change a few variables in config/environment.rb. Please set the following:
+
+  API_PATH = ""
+  API_HOST = "api.justin.tv"
+  API_PORT = 80
