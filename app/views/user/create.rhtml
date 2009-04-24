@@ -1,0 +1,16 @@
+<h2>user/create</h2>
+
+<p>This action will only work for whitelisted 3rd party applications</p>
+
+<% form_tag '', :multipart => true do %>
+    <% [:login, :password, :email, :birthday, :name, :profile_about, :favorite_quotes, :location, :profile_background_color, :profile_link_color, :profile_header_text_color, :profile_header_bg_color, :profile_header_border_color].each do |x| %>
+        <%= x %>: <%= text_field_tag "user[#{x}]", (params[:user] ? params[:user][x] : nil) %> <br>
+    <% end %>
+    picture: <%= file_field_tag "picture" %><br>
+    serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <%= submit_tag 'Create User' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

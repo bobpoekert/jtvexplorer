@@ -11,6 +11,21 @@ class UserController < ApplicationController
     end
   end
   
+  def create
+    if request.method == :post
+      @query = "/user/create.#{@serialization_method}"
+      params[:user].delete_if {|k,v| v.blank? }
+
+      if params[:picture].blank?
+        @result = justintv_oauth_two_legged_post(@query, params[:user])
+      else
+        # format the picture data
+        data, headers = Multipart::Post.prepare_query params[:user].merge(:picture => params[:picture])
+        @result = justintv_oauth_two_legged_post(@query, data, headers)
+      end
+    end
+  end
+  
   def update
     if request.method == :post
       @query = "/user/update.#{@serialization_method}"

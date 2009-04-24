@@ -32,6 +32,11 @@ class ApplicationController < ActionController::Base
     get_conn.post("#{API_PATH}#{@query}", post_params, headers)
   end
   
+  def justintv_oauth_two_legged_post(path, post_params, headers={})
+    @req_method = 'POST'
+    get_conn(false).post("#{API_PATH}#{@query}", post_params, headers)
+  end
+  
   private
   
   def check_for_oauth
@@ -48,8 +53,12 @@ class ApplicationController < ActionController::Base
     true
   end
   
-  def get_conn
-    OAuth::AccessToken.new JTV_CONSUMER, session[:oauth_token], session[:oauth_secret]
+  def get_conn(use_oauth_tokens=true)
+    if use_oauth_tokens
+      OAuth::AccessToken.new JTV_CONSUMER, session[:oauth_token], session[:oauth_secret]
+    else
+      OAuth::AccessToken.new JTV_CONSUMER
+    end
   end
   
   def default_serialization_method

@@ -26,6 +26,21 @@ class ChannelController < ApplicationController
     end
   end
   
+  def create
+    if request.method == :post
+      @query = "/channel/create.#{@serialization_method}"
+      params[:channel].delete_if {|k,v| v.blank? }
+
+      if params[:picture].blank?
+        @result = justintv_oauth_two_legged_post(@query, params[:channel])
+      else
+        # format the picture data
+        data, headers = Multipart::Post.prepare_query params[:channel].merge(:picture => params[:picture])
+        @result = justintv_oauth_two_legged_post(@query, data, headers)
+      end
+    end
+  end
+  
   def fans
     if request.method == :post
       p = { "offset" => params[:offset], "limit" => params[:limit] }.to_params
