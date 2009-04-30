@@ -1,0 +1,1 @@
+<%= link_to "Log in to enable this call", "#{@request_token.authorize_url}&oauth_callback=#{CGI.escape("http://#{request.env['HTTP_HOST']}/oauth/authorize")}" %>

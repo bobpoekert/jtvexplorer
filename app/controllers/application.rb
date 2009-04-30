@@ -27,6 +27,11 @@ class ApplicationController < ActionController::Base
     get_conn.get("#{API_PATH}#{@query}")
   end
   
+  def justintv_oauth_two_legged_get(path)
+    @req_method = 'GET'
+    get_conn(false).post("#{API_PATH}#{@query}")
+  end
+  
   def justintv_oauth_post(path, post_params, headers={})
     @req_method = 'POST'
     get_conn.post("#{API_PATH}#{@query}", post_params, headers)

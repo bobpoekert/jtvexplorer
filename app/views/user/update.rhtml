@@ -12,7 +12,7 @@
         <%= submit_tag 'Update User' %>
     <% end %>
 <% else %>
-    <%= link_to "Log in to enable this call for your user", @request_token.authorize_url %>
+    <%= render :partial => "main/authorize" %>
 <% end %>
 
 <%= render :partial => "main/results" %>

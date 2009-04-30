@@ -12,7 +12,7 @@
         <%= submit_tag 'Update Clip' %>
     <% end %>
 <% else %>
-    <%= link_to "Log in to enable this call for your channel", @request_token.authorize_url %>
+    <%= render :partial => "main/authorize" %>
 <% end %>
 
 <%= render :partial => "main/results" %>

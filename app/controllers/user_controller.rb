@@ -7,7 +7,7 @@ class UserController < ApplicationController
   def show
     if request.method == :post
       @query = "/user/show/#{params[:login]}.#{@serialization_method}"
-      @result = justintv_get(@query)
+      @result = justintv_oauth_get(@query)
     end
   end
   
