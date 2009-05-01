@@ -14,7 +14,7 @@ require 'oauth'
 require 'multipart'
 require 'shorthand'
 
-API_PATH = "/"
+API_PATH = "/api"
 API_HOST = "api.justin.tv"
 API_PORT = 80
 
