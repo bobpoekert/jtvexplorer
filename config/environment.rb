@@ -18,8 +18,8 @@ API_PATH = "/api"
 API_HOST = "api.justin.tv"
 API_PORT = 80
 
-JTV_CONSUMER = OAuth::Consumer.new("GZqz7iOePscPHJVYmqSyLQ", 
-                      "MZQP66s5BK8KWaQjOEtDk93zRysQ0rfe9P9n4nA1U", 
+JTV_CONSUMER = OAuth::Consumer.new("QZjD7tEeQTCIUkNy8kU8g", 
+                      "aUjifB4PrbVT1fipWelbJbyZdRaZfzNRzLuoeTygxY", 
                       :site => "http://#{API_HOST}:#{API_PORT}", 
                       :http_method => :get)
 

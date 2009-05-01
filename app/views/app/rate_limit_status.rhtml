@@ -1,0 +1,14 @@
+<h2>application/rate_limit_status</h2>
+
+<% form_tag do %>
+    check for:<br>
+    ip: <%= radio_button_tag 'check_type', 'ip' %>
+    application key: <%= radio_button_tag 'check_type', 'app' %>
+    <br><br>
+    serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <%= submit_tag 'Get Rate Limit Status' %><br>
+<% end %>
+
+<%= render :partial => "main/results" %>
