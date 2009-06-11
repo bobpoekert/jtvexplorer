@@ -85,21 +85,20 @@ class ChannelController < ApplicationController
     end
   end
 
-  def public_embed
+  def publisher_embed
     if request.method == :post
       p = { }
-      p[:volume] = params[:volume] unless params[:volume].blank?
       p[:height] = params[:height] unless params[:height].blank?
       p[:width] = params[:width] unless params[:width].blank?
 
-      @query = "/channel/public_embed/#{params[:login]}.#{@serialization_method}?#{p.to_params}"
+      @query = "/channel/publisher_embed.#{@serialization_method}?#{p.to_params}"
       @result = justintv_get(@query)      
     end
   end
   
   def stream_key
     if request.method == :post
-      @query = "/channel/stream_key/#{params[:login]}.#{@serialization_method}"
+      @query = "/channel/stream_key.#{@serialization_method}"
       @result = justintv_get(@query)
     end
   end

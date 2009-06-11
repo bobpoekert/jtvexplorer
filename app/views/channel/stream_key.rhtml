@@ -1,10 +1,12 @@
 <h2>channel/stream_key</h2>
-
-<% form_tag do %>
-    serialization method: <br>
-    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
-    json: <%= radio_button_tag 'serialization_method', 'json' %>
-    <%= submit_tag 'Show Your Stream Key' %>
+<% if @oauth %>
+	<% form_tag do %>
+		serialization method: <br>
+		xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+		json: <%= radio_button_tag 'serialization_method', 'json' %>
+		<%= submit_tag 'Show Your Stream Key' %>
+	<% end %>
+<% else %>
+    <%= render :partial => "main/authorize" %>
 <% end %>
-
 <%= render :partial => "main/results" %>
