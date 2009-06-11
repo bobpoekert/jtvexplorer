@@ -1,11 +1,10 @@
 <h2>channel/stream_key</h2>
 
 <% form_tag do %>
-    login: <%= text_field_tag 'login', params[:login] %> <br>
     serialization method: <br>
     xml: <%= radio_button_tag 'serialization_method', 'xml' %>
     json: <%= radio_button_tag 'serialization_method', 'json' %>
-    <%= submit_tag 'Show Stream Key' %>
+    <%= submit_tag 'Show Your Stream Key' %>
 <% end %>
 
 <%= render :partial => "main/results" %>
