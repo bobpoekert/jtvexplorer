@@ -1,0 +1,11 @@
+<h2>chat/global_stats</h2>
+
+<% form_tag do %>
+    login: <%= text_field_tag 'login', params[:login] %> <br>
+    serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <%= submit_tag 'Show Global Stats' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

@@ -4,6 +4,11 @@ Run the jtvexplorer rails app and go to http://localhost:3000/ to see the comple
 
 In order to run this you will have to change a few variables in config/environment.rb. Please set the following:
 
-  API_PATH = ""
+  API_PATH = "/api"
   API_HOST = "api.justin.tv"
   API_PORT = 80
+  
+Also, you will need to install sqlite3 and the ruby gem.  For example, on Mac OS X:
+
+  sudo port install sqlite3
+  sudo gem install sqlite3-ruby
