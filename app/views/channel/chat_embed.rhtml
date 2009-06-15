@@ -1,0 +1,11 @@
+<h2>channel/chat_embed</h2>
+
+<% form_tag do %>
+    login: <%= text_field_tag 'login', params[:login] %> <br>
+    width: <%= text_field_tag 'width', params[:width] %> <br>
+    height: <%= text_field_tag 'height', params[:height] %> <br>
+    <%= hidden_field_tag 'serialization_method', 'html' %>
+    <%= submit_tag 'Show Chat Embed Code' %>
+<% end %>
+
+<%= render :partial => "main/results" %>

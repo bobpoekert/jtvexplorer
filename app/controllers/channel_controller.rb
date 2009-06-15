@@ -85,6 +85,17 @@ class ChannelController < ApplicationController
     end
   end
 
+  def chat_embed
+    if request.method == :post
+      p = { }
+      p[:height] = params[:height] unless params[:height].blank?
+      p[:width] = params[:width] unless params[:width].blank?
+
+      @query = "/channel/chat_embed/#{params[:login]}.#{@serialization_method}?#{p.to_params}"
+      @result = justintv_get(@query)      
+    end
+  end
+  
   def publisher_embed
     if request.method == :post
       p = { }

@@ -1,0 +1,14 @@
+<h2>stream/list</h2>
+
+<% form_tag do %>
+    select a login (single channel): <%= text_field_tag 'login', params[:login] %> <br>
+	<strong>or</strong> category (multiple channels): <%= select_tag "category", options_for_select(['(ALL)', 'sports', 'entertainment', 'social', 'producers', 'gaming', 'news', 'science_tech', 'educational'], params[:category]) %> <br>
+    offset: <%= text_field_tag 'offset', params[:offset] || 0 %> <br>
+    limit: <%= text_field_tag 'limit', params[:limit] || 20 %> <br>
+    serialization method: <br>
+    xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
+    <%= submit_tag 'Show Stream List' %>
+<% end %>
+
+<%= render :partial => "main/results" %>
