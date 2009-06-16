@@ -103,14 +103,14 @@ class ChannelController < ApplicationController
       p[:width] = params[:width] unless params[:width].blank?
 
       @query = "/channel/publisher_embed.#{@serialization_method}?#{p.to_params}"
-      @result = justintv_get(@query)      
+      @result = justintv_oauth_post(@query, {})     
     end
   end
   
   def stream_key
     if request.method == :post
       @query = "/channel/stream_key.#{@serialization_method}"
-      @result = justintv_get(@query)
+      @result = justintv_oauth_post(@query, {})
     end
   end
 end
