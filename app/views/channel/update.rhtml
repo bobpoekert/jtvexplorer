@@ -2,10 +2,13 @@
 
 <% if @oauth %>
     <% form_tag '', :multipart => true do %>
-        <% [:title, :tags, :category, :subcategory, :language, :timezone, :about, :description, :blog, :facebook, :myspace, :first_color, :second_color, :text_color, :link_color, :background_color, :header_background_color, :wrapper_background_color, :alt_text, :box_background, :box_border, :chat_border, :h1_color, :h2_color].each do |x| %>
+        <% [:title, :tags, :category, :subcategory, :language, :timezone, :about, :description, :channel_text_color, :channel_link_color, :channel_column_color, :channel_background_color].each do |x| %>
             <%= x %>: <%= text_field_tag "channel[#{x}]", (params[:channel] ? params[:channel][x] : nil) %> <br>
         <% end %>
-        picture: <%= file_field_tag "picture" %><br>
+        <% [:profile_image, :channel_header_image, :channel_background_image].each do |image_type| %>
+            <%= image_type %>: <%= file_field_tag image_type %><br>
+        <% end %>
+        picture: <%= file_field_tag "profile_image" %><br>
         serialization method: <br>
         xml: <%= radio_button_tag 'serialization_method', 'xml' %>
         json: <%= radio_button_tag 'serialization_method', 'json' %>
