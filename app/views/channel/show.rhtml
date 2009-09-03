@@ -4,8 +4,7 @@
     login: <%= text_field_tag 'login', params[:login] %> <br>
     serialization method: <br>
     xml: <%= radio_button_tag 'serialization_method', 'xml' %>
-    json: <%= radio_button_tag 'serialization_method', 'json' %><br/><br/>
-    jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
+    json: <%= radio_button_tag 'serialization_method', 'json' %>
     <%= submit_tag 'Show Channel' %>
 <% end %>
 
