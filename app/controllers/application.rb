@@ -15,7 +15,17 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
+
+  def fix_path(path)
+    if path.count('?') > 1
+        return path.gsub('?', '&').sub('&', '?')
+    else
+        return path
+    end
+  end
+
   def justintv_get(path)
+    path = fix_path(path)
     @req_method = 'GET'
     Net::HTTP.start(API_HOST, API_PORT) { |http|
       http.get("#{API_PATH}#{path}")
@@ -23,21 +33,25 @@ class ApplicationController < ActionController::Base
   end
   
   def justintv_oauth_get(path)
+    path = fix_path(path)
     @req_method = 'GET'
     get_conn.get("#{API_PATH}#{@query}")
   end
   
   def justintv_oauth_two_legged_get(path)
+    path = fix_path(path)
     @req_method = 'GET'
     get_conn(false).post("#{API_PATH}#{@query}")
   end
   
   def justintv_oauth_post(path, post_params, headers={})
+    path = fix_path(path)
     @req_method = 'POST'
     get_conn.post("#{API_PATH}#{@query}", post_params, headers)
   end
   
   def justintv_oauth_two_legged_post(path, post_params, headers={})
+    path = fix_path(path)
     @req_method = 'POST'
     get_conn(false).post("#{API_PATH}#{@query}", post_params, headers)
   end
@@ -68,5 +82,8 @@ class ApplicationController < ActionController::Base
   
   def default_serialization_method
     @serialization_method = params[:serialization_method] || "xml"
+    if @serialization_method == "json" and params.has_key? :jsonp and params[:jsonp].length > 0
+        @serialization_method = "json?jsonp=#{params[:jsonp]}"
+    end
   end
 end
