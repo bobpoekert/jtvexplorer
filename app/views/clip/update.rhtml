@@ -9,6 +9,7 @@
         serialization method: <br>
         xml: <%= radio_button_tag 'serialization_method', 'xml' %>
         json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <br/><br/> jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
         <%= submit_tag 'Update Clip' %>
     <% end %>
 <% else %>
