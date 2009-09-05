@@ -1,0 +1,16 @@
+<h2>chat/send_message</h2>
+
+<% if @oauth %>
+    <% form_tag '' do %>
+        message: <%= text_field_tag "message", "" %><br>
+        serialization method: <br>
+        xml: <%= radio_button_tag 'serialization_method', 'xml' %>
+        json: <%= radio_button_tag 'serialization_method', 'json' %>
+        <br/><br/> jsonp callback: <%= text_field_tag 'jsonp', params[:jsonp] %>
+        <%= submit_tag 'Post Message' %>
+    <% end %>
+<% else %>
+    <%= render :partial => "main/authorize" %>
+<% end %>
+
+<%= render :partial => "main/results" %>
